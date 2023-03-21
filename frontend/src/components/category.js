@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 
 
-const Products = () =>{
+const Category = () =>{
     let [responseData,setResponseData] = useState([])
     React.useEffect(()=>{
-        axios.get("http://localhost:8000/getallproducts")
+        axios.get("http://localhost:8000/getallcategory")
         .then((result)=>{
             setResponseData(result.data)
             //console.log(result)
@@ -24,8 +24,7 @@ const Products = () =>{
             {responseData.map((data)=>{
                 return <div style={{margin: '10px', backgroundColor : '#F3F3F3',display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
                     <img src= "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg" style={{ width: "100px", height: "100px", borderRadius: "50%" }} />
-                    <p>name : {data.prod_name}</p>
-                    <p>price : ${data.price}</p>
+                    <p>name : {data.cat_name}</p>
                     </div>
             })}
             
@@ -33,4 +32,4 @@ const Products = () =>{
     )
 }
 
-export default Products
+export default Category
