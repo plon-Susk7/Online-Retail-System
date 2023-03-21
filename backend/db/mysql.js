@@ -1,19 +1,21 @@
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
+//createConnection previously instead of createPool
+var con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "admin"
+    password: "admin",
+    database : 'myDB'
 });
 
-var connectDB = ()=>{
-    con.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-    });
+// var connectDB = ()=>{
+//     con.connect(function(err) {
+//         if (err) throw err;
+//         console.log("Connected!");
+//     });
 
-    return con;
-} 
+//     return con;
+// } 
 
 
-module.exports = connectDB
+module.exports = con;
