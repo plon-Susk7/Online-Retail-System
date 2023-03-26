@@ -12,6 +12,7 @@ const NavBar = () =>{
             <a href="/products">Products</a>
             <a href="/categories">Category</a>
             <a href="/brands">Brands</a>
+            <a href="http://localhost:8000/getallolaps">Olaps</a>
             
         </div>
     )

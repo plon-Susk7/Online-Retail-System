@@ -3,6 +3,7 @@ const connectDB = require('./db/mysql')
 const getAllProducts = require('./router/products')
 const getAllCategory = require('./router/category')
 const getAllBrand = require('./router/brand')
+const getAllOlaps = require('./router/olaps')
 const app = express()
 const cors = require('cors');
 
@@ -25,6 +26,7 @@ app.use(express.json())
 app.use('/getallproducts',getAllProducts)
 app.use('/getallcategory',getAllCategory)
 app.use('/getallbrand',getAllBrand)
+app.use('/getallolaps',getAllOlaps)
 
 const start = async() =>{
     
