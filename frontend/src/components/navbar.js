@@ -13,6 +13,7 @@ const NavBar = () =>{
             <a href="/categories">Category</a>
             <a href="/brands">Brands</a>
             <a href="http://localhost:8000/getallolaps">Olaps</a>
+            <a href="/signup">Sign up</a>
             
         </div>
     )

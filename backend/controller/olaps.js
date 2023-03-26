@@ -8,7 +8,7 @@ const getAllOlaps = async (req, res) => {
       query('select orders.cust_id, count(orders.order_id) from orders group by orders.cust_id with rollup;'),
       query('select orders.order_id,orders.cust_id, sum(orders.total) from orders group by orders.cust_id,orders.order_id with rollup;')
     ])
-    console.log(results)
+    
     res.status(201).send(results)
   } catch (err) {
     console.error(err)
