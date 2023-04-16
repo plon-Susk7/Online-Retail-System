@@ -2,19 +2,18 @@ import React from 'react';
 
 
 const NavBar = () =>{
-    
 
     
     return(
-        <div>
-            <h1>ARFISA</h1>
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/categories">Category</a>
-            <a href="/brands">Brands</a>
-            <a href="http://localhost:8000/getallolaps">Olaps</a>
-            <a href="/signup">Sign up</a>
-            
+        <div className="flex items-center justify-between bg-gray-900 p-4">
+            <a href="/" className="text-white text-3xl font-bold">ARFISA</a>
+            <div className="flex space-x-4">
+                <a href="/" className="text-white hover:text-gray-400">Home</a>
+                <a href="/products" className="text-white hover:text-gray-400">Products</a>
+                <a href="/categories" className="text-white hover:text-gray-400">Category</a>
+                <a href="/brands" className="text-white hover:text-gray-400">Brands</a>
+                <a href="/signup" className="text-white hover:text-gray-400">Sign up</a>
+            </div>
         </div>
     )
 }

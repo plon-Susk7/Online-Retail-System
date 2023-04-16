@@ -12,7 +12,6 @@ function App() {
     <NavBar/>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<NavBar/>} exact/>
       <Route path="/products" element={<Products/>}/>
       <Route path="/categories" element={<Category/>}/>
       <Route path="/brands" element={<Brand/>}/>
