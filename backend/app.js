@@ -5,6 +5,7 @@ const getAllCategory = require('./router/category')
 const getAllBrand = require('./router/brand')
 const getAllOlaps = require('./router/olaps')
 const signup = require('./router/signup')
+const addToCart = require('./router/cart')
 const app = express()
 const cors = require('cors');
 
@@ -29,6 +30,7 @@ app.use('/getallcategory',getAllCategory)
 app.use('/getallbrand',getAllBrand)
 app.use('/getallolaps',getAllOlaps)
 app.use('/signup',signup)
+app.use('/cart',addToCart)
 
 const start = async() =>{
     

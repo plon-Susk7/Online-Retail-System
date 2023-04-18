@@ -12,6 +12,7 @@ const NavBar = () =>{
                 <a href="/products" className="text-white hover:text-gray-400">Products</a>
                 <a href="/categories" className="text-white hover:text-gray-400">Category</a>
                 <a href="/brands" className="text-white hover:text-gray-400">Brands</a>
+                <a href="/cart" className="text-white hover:text-gray-400">Cart</a>
                 <a href="/signup" className="text-white hover:text-gray-400">Sign up</a>
                 <a href="/login" className="text-white hover:text-gray-400">Login</a>
             </div>

@@ -4,6 +4,7 @@ import Products from "./components/products";
 import Category from './components/category';
 import Brand from './components/brand';
 import Signup from './components/signup';
+import Cart from './components/cart'
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <Route path="/categories" element={<Category/>}/>
       <Route path="/brands" element={<Brand/>}/>
       <Route path="/signup" element={<Signup/>}/>
-      
+      <Route path="/cart" element={<Cart/>}></Route>
       
     </Routes>
     </BrowserRouter>
