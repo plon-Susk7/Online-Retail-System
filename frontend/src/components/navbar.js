@@ -13,6 +13,7 @@ const NavBar = () =>{
                 <a href="/categories" className="text-white hover:text-gray-400">Category</a>
                 <a href="/brands" className="text-white hover:text-gray-400">Brands</a>
                 <a href="/signup" className="text-white hover:text-gray-400">Sign up</a>
+                <a href="/login" className="text-white hover:text-gray-400">Login</a>
             </div>
         </div>
     )
