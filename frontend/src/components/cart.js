@@ -11,9 +11,6 @@ const Cart = () =>{
     let [responseData, setResponseData] = useState([])
     React.useEffect(() => {
       axios.get("http://localhost:8000/cart") 
-        .then((result) => {
-          setResponseData(result.data)
-        })
         .catch(err => console.log(err));
     }, [])
 

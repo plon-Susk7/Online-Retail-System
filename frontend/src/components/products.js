@@ -11,11 +11,11 @@ const Products = () => {
       })
       .catch(err => console.log(err));
   }, [])
-
+  const user = JSON.parse(localStorage.getItem('user'))
   const addToCart = (id) => {
     console.log(id)
     axios
-      .post("http://localhost:8000/cart", { id: id }) //adding to cart
+      .post("http://localhost:8000/cart", { id: id,user_id : user.user_id }) //adding to cart
       .then((res) => {
         console.log(res.data);
       })

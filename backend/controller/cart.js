@@ -3,7 +3,7 @@ const con = require('../db/mysql')
 
 const addToCart = (req,res) =>{
     
-    con.query(`INSERT INTO cart_contains(cart_id, cust_id, prod_id) VALUES (83,83,${req.body.id})`,(err,results)=>{
+    con.query(`INSERT INTO cart_contains(cart_id, cust_id, prod_id) VALUES (${req.body.user_id},${req.body.user_id},${req.body.id})`,(err,results)=>{
         if(err) throw err;
         res.status(201).send(results);
     })
