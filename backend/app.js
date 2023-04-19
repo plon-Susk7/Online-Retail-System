@@ -7,6 +7,8 @@ const getAllOlaps = require('./router/olaps')
 const signup = require('./router/signup')
 const addToCart = require('./router/cart')
 const login = require('./router/login')
+const getAllCoupon = require('./router/coupon')
+const checkout = require('./router/checkout')
 const app = express()
 const cors = require('cors');
 
@@ -33,6 +35,8 @@ app.use('/getallolaps',getAllOlaps)
 app.use('/signup',signup)
 app.use('/cart',addToCart)
 app.use('/login',login)
+app.use('/coupon',getAllCoupon)
+app.use('/checkout',checkout)
 
 const start = async() =>{
     

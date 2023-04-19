@@ -10,6 +10,7 @@ import Login from './components/login'
 import Profile from './components/profile';
 
 
+
 function App() {
   const [user,setUser] = useState(null);
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/login" element={<Login user={user} setUser={setUser}/>}></Route>
       <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}></Route>
+
       
     </Routes>
     </BrowserRouter>

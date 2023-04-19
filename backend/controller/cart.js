@@ -12,14 +12,15 @@ const addToCart = (req,res) =>{
 }
 
 const emptyCart = (req,res) => {
-    con.query(`delete from cart_contains where cart_id = 83;`,(err,results)=>{
+    con.query(`delete from cart_contains where cart_id = ${req.body.user_id};`,(err,results)=>{
         if(err) throw err;
         res.status(201).send(results);
     })
 }
 
 const getCart = (req,res) => {
-    con.query(`select prod_name,prod_desc,price from cart_contains,product where cart_contains.prod_id = product.prod_id and cust_id = 83`,(err,results)=>{
+    console.log(req.body)
+    con.query(`select product.prod_id,prod_name,prod_desc,price from cart_contains,product where cart_contains.prod_id = product.prod_id and cust_id = ${req.body.user_id}`,(err,results)=>{
         if(err) throw err;
         res.status(201).send(results)
     })
