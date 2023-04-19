@@ -57,6 +57,16 @@ const Cart = () => {
     
     axios.post('http://localhost:8000/checkout',{cust_id:user.user_id,coup_id:selectedCoupon.coup_id,total:cartTotal,prod_ids:responseData})
     .then((res)=>{
+        emptyCart()
+        axios.post('http://localhost:8000/coupon/removecoupon',{user_id:user.user_id,coup_id:selectedCoupon.coup_id})
+        .then((res)=>{
+            axios.post('http://localhost:8000/coupon', { user_id: user.user_id })
+            .then((result) => {
+                setCouponData(result.data);
+            })
+            .catch((err) => console.log(err));
+        })
+        .catch((err)=>console.log(err))
         console.log(res.data)
     })
     .catch((err)=>console.log(err))

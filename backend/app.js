@@ -35,7 +35,7 @@ app.use('/getallolaps',getAllOlaps)
 app.use('/signup',signup)
 app.use('/cart',addToCart)
 app.use('/login',login)
-app.use('/coupon',getAllCoupon)
+app.use('/coupon',getAllCoupon) // This has all coupon related functionalities
 app.use('/checkout',checkout)
 
 const start = async() =>{

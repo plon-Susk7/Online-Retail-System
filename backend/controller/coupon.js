@@ -11,5 +11,13 @@ const getAllCoupon = (req,res) =>{
     
 }
 
+const removeCoupon = (req,res) => {
+    con.query(`delete from has_coupon where has_coupon.cust_id = ${req.body.user_id} and has_coupon.coup_id=${req.body.coup_id};`,(err,results)=>{
+        if(err) throw err;
+        res.status(201).send(results);
+    })
 
-module.exports = {getAllCoupon}
+}
+
+
+module.exports = {getAllCoupon,removeCoupon}
