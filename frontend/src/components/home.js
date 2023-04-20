@@ -7,10 +7,11 @@ const Home = () => {
   const [customers, setCustomers] = useState([]);
   const [flag,setFlag] = useState(true)
   const [orderFlag,setOrderFlag] = useState(true)
+  const userLocal = JSON.parse(localStorage.getItem('user'))
   const handleAgentButtonClick = () => {
     axios.get('http://localhost:8000/user/agents')
       .then((result) => {
-        if(flag==true){
+        if(flag===true){
             setCustomers(result.data);
             setFlag(false)
         }else{
@@ -24,7 +25,7 @@ const Home = () => {
   const handleCustomerButtonClick = () => {
     axios.get('http://localhost:8000/user/customers')
       .then((result) => {
-        if(flag==true){
+        if(flag===true){
             setCustomers(result.data);
             setFlag(false)
         }else{
@@ -39,7 +40,7 @@ const Home = () => {
   const handleOrderButtonClick = () => {
     axios.get('http://localhost:8000/order')
       .then((result) => {
-        if(orderFlag==true){
+        if(orderFlag===true){
             setOrders(result.data);
             setOrderFlag(false)
         }else{
@@ -49,6 +50,38 @@ const Home = () => {
       })
       .catch(err => console.log(err));
   };
+
+  const handleDeliveryButtonClick = () => {
+    axios.get(`http://localhost:8000/order/agent/${userLocal.user_id}`)
+    .then((result)=>{
+        if(orderFlag===true){
+            setOrders(result.data);
+            setOrderFlag(false)
+        }else{
+            setOrders([])
+            setOrderFlag(true)
+        }
+    })
+    .catch(err=>console.log(err))
+  }
+
+  const handleOrderStatusChange = (id) => {
+        axios.put(`http://localhost:8000/order/${id}`)
+        .then((result)=>{
+            axios.get(`http://localhost:8000/order/agent/${userLocal.user_id}`)
+            .then((result)=>{
+                if(orderFlag===true){
+                    setOrders(result.data);
+                    setOrderFlag(false)
+                }else{
+                    setOrders([])
+                    setOrderFlag(true)
+                }
+            })
+            .catch(err=>console.log(err))
+        })
+        .catch((err)=>console.log(err))
+  }
 
   return (
     <div className="flex justify-center m-4 h-screen">
@@ -69,6 +102,17 @@ const Home = () => {
           <button
             className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             onClick={handleOrderButtonClick}
+          >
+            List Orders
+          </button>
+        </div>
+      )}
+
+    {user && user.role === 'Deliverer' && (
+        <div className="space-x-4">
+          <button
+            className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleDeliveryButtonClick}
           >
             List Orders
           </button>
@@ -115,7 +159,18 @@ const Home = () => {
                     <div className="mb-2">
                     <div className="text-gray-600 text-sm">Address:</div>
                     <div className="text-gray-700 font-semibold">{order.address}</div>
+                    <div className="text-gray-600 text-sm">Status:</div>
+                    <div className="text-gray-700 font-semibold">{order.status}</div>
                     </div>
+                    {order.status==0 && (
+                        <button
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => handleOrderStatusChange(order.order_id)}
+                        >
+                        Mark as Delivered
+                        </button>
+                    )}
+                    
                 </div>
                 </li>
                 ))}
