@@ -13,7 +13,10 @@ const Products = () => {
       .catch((err) => console.log(err));
     
     const user = JSON.parse(localStorage.getItem('user'));
-    setIsAdmin(user.role === 'Admin');
+    if(user.role!= null){
+      setIsAdmin(user.role === 'Admin');
+    }
+    
   }, []);
 
   const addToCart = (id) => {
@@ -37,6 +40,8 @@ const Products = () => {
 
   return (
     <div className="container mx-auto">
+      {isAdmin && (<a href="/addProduct" class="inline-block rounded-md m-2 p-2 px-4 bg-blue-500 text-white font-bold hover:bg-blue-700">Add Product</a>)}
+
       <h1 className="text-4xl font-bold mb-8">Products</h1>
       <div className="grid grid-cols-3 gap-6">
         {responseData.map((data) => (

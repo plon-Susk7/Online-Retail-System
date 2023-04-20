@@ -1,5 +1,5 @@
 const express  = require('express')
-const connectDB = require('./db/mysql')
+
 const getAllProducts = require('./router/products')
 const getAllCategory = require('./router/category')
 const getAllBrand = require('./router/brand')
@@ -9,6 +9,8 @@ const addToCart = require('./router/cart')
 const login = require('./router/login')
 const getAllCoupon = require('./router/coupon')
 const checkout = require('./router/checkout')
+const users = require('./router/user')
+const orders = require('./router/order')
 const app = express()
 const cors = require('cors');
 
@@ -26,6 +28,8 @@ app.use('/cart',addToCart)
 app.use('/login',login)
 app.use('/coupon',getAllCoupon) // This has all coupon related functionalities
 app.use('/checkout',checkout)
+app.use('/user',users)
+app.use('/order',orders)
 
 const start = async() =>{
     

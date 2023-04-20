@@ -25,6 +25,7 @@ const Login = ({user,setUser}) => {
     axios
       .post('http://localhost:8000/login', formData)
       .then((res) => {
+        
         console.log(res.data);
         if(res.data[0]=== undefined){
             console.log("can't login");
