@@ -29,6 +29,15 @@ const Login = ({user,setUser}) => {
         if(res.data[0]=== undefined){
             console.log("can't login");
         }else{
+            console.log(res.data[0])
+            if(res.data[0].user_id >=86 && res.data[0].user_id<=95){
+              res.data[0]["role"] = "Deliverer"
+            }else if(res.data[0].user_id>= 1 && res.data[0].user_id<=5){
+              res.data[0]["role"] = "Admin"
+            }else{
+              res.data[0]["role"] = "Customer"
+            }
+            console.log(res.data[0])
             setUser(res.data[0])
             localStorage.setItem('user',JSON.stringify(res.data[0]))
             console.log(`You are logged in as ${res.data[0].fname}!`)

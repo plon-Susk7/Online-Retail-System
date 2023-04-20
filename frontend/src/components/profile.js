@@ -8,14 +8,7 @@ const Profile = ({user,setUser}) => {
     localStorage.removeItem('user')
   }
 
-  let role = ''
-  if(userLocal.user_id >= 86 && userLocal.user_id<=95){
-        role = 'Deliverer'
-  }else if(userLocal.user_id >= 1 && userLocal.user_id<=5){
-        role = 'Admin'
-  }else{
-        role = 'Customer'
-  }
+
   
 
   return (
@@ -37,7 +30,7 @@ const Profile = ({user,setUser}) => {
         Username: {userLocal.username}
       </p>
       <p className="text-gray-700 font-semibold">
-        Account Type: {role}
+        Account Type: {userLocal.role}
       </p>
       <button
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4"

@@ -12,17 +12,6 @@ const checkout = require('./router/checkout')
 const app = express()
 const cors = require('cors');
 
-// var con = connectDB();
-
-// con.query('use myDB',(err,res)=>{
-//   if(err) throw err;
-//   //console.log(res)
-// })
-
-// con.query('select category.cat_name, COUNT(Product.prod_id) as product_count from Category left join product on Category.cat_id = Product.cat_id group by Category.cat_name;',(err,res)=>{
-//   if(err) throw err;
-//   console.log(res)
-// })
 app.use(cors())
 app.use(express.static("./public"))
 app.use(express.urlencoded({extended:true}))

@@ -5,7 +5,8 @@ var con = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "admin",
-    database : 'myDB'
+    database : 'myDB',
+    multipleStatements: true
 });
 
 // var connectDB = ()=>{
