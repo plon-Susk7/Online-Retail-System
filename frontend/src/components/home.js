@@ -104,7 +104,7 @@ const Home = () => {
 
   return (
     <div className="flex justify-center m-4 h-screen">
-      {user && user.role === 'Admin' && (
+      {user && user.r_ole === 'admin' && (
         <div className="space-x-4">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -127,7 +127,7 @@ const Home = () => {
         </div>
       )}
 
-    {user && user.role === 'Deliverer' && (
+    {user && user.r_ole === 'deliverer' && (
         <div className="space-x-4">
           <button
             className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
@@ -138,7 +138,7 @@ const Home = () => {
         </div>
       )}
 
-      {user && user.role === 'Customer' && (
+      {user && user.r_ole === 'customer' && (
         <div>
             <button
             className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"

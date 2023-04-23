@@ -30,7 +30,7 @@ const Profile = ({setUser}) => {
         Username: {userLocal.username}
       </p>
       <p className="text-gray-700 font-semibold">
-        Account Type: {userLocal.r_ole}
+        Account Type: {userLocal.role}
       </p>
       <p className="text-gray-700 font-semibold">
         Address: {userLocal.address}
