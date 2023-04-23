@@ -31,17 +31,27 @@ const Login = ({user,setUser}) => {
             console.log("can't login");
         }else{
             console.log(res.data[0])
-            if(res.data[0].user_id >=86 && res.data[0].user_id<=95){
-              res.data[0]["role"] = "Deliverer"
-            }else if(res.data[0].user_id>= 1 && res.data[0].user_id<=5){
-              res.data[0]["role"] = "Admin"
-            }else{
-              res.data[0]["role"] = "Customer"
-            }
-            console.log(res.data[0])
-            setUser(res.data[0])
+            // if(res.data[0].user_id >=86 && res.data[0].user_id<=95){
+            //   res.data[0]["role"] = "Deliverer"
+            //   res.data[0]["address"] = "anonymous"
+            // }else if(res.data[0].user_id>= 1 && res.data[0].user_id<=5){
+            //   res.data[0]["role"] = "Admin"
+            //   res.data[0]["address"] = "anonymous"
+            // }else{
+            //   res.data[0]["role"] = "Customer"
+            //   axios.get(`http://localhost:8000/login/${res.data[0].user_id}`)
+            //   .then((result)=>{
+            //     res.data[0]["address"] = result.data[1][0].address
+            //   })
+            //   .catch((err)=>console.log(err))
+
+            // }
+            // console.log(res.data[0])
+            // setUser(res.data[0])
+            // console.log(user)
             localStorage.setItem('user',JSON.stringify(res.data[0]))
             console.log(`You are logged in as ${res.data[0].fname}!`)
+            console.log(JSON.parse(localStorage.getItem('user')))
         }
       })
       .catch((err) => console.log(err));

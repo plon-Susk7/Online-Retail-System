@@ -34,6 +34,9 @@ const Cart = () => {
   }, [responseData]);
 
   const handleCouponSelect = (coupon) => {
+    if(coupon===null){
+      coupon = 0 ;
+    }
     const discountAmount = cartTotal * (coupon.discount / 100);
     setCartTotal(cartTotal - discountAmount);
     setSelectedCoupon(coupon);
@@ -55,7 +58,7 @@ const Cart = () => {
 
   const checkout = () => {
     
-    axios.post('http://localhost:8000/checkout',{cust_id:user.user_id,coup_id:selectedCoupon.coup_id,total:cartTotal,prod_ids:responseData})
+    axios.post('http://localhost:8000/checkout',{cust_id:user.user_id,coup_id:selectedCoupon.coup_id,total:cartTotal,prod_ids:responseData,address:user.address})
     .then((res)=>{
         emptyCart()
         axios.post('http://localhost:8000/coupon/removecoupon',{user_id:user.user_id,coup_id:selectedCoupon.coup_id})

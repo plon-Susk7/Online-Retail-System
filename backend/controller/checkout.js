@@ -5,7 +5,7 @@ const Checkout = (req,res) =>{
     console.log(req.body)
     const today = new Date().toISOString().slice(0, 10);
 
-    con.query(`INSERT INTO orders(cust_id, deliv_id, total, address, placed_date, payment, coup_id) VALUES ('${req.body.cust_id}', '94','${req.body.total}' , 'harkesh nagar 123', '${today}', 'sit', '${req.body.coup_id}');`,(err,results)=>{
+    con.query(`INSERT INTO orders(cust_id, deliv_id, total, address, placed_date, payment, coup_id) VALUES ('${req.body.cust_id}', '94','${req.body.total}' , '${req.body.address}', '${today}', 'sit', '${req.body.coup_id}');`,(err,results)=>{
         if(err) throw err;
         console.log(results)
 

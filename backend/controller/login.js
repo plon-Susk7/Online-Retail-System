@@ -5,11 +5,18 @@ const login= (req,res) =>{
     
     console.log(req.body)
 
-    con.query(`select * from user where user.username='${req.body.username}' and user.passw=${req.body.passw}`,(err,results)=>{
+    con.query(`select * from user,customers where user.user_id = customers.cust_id and user.username='${req.body.username}' and user.passw=${req.body.passw}`,(err,results)=>{
         if(err) throw err;
         res.send(results)
     })
 
 }
 
-module.exports = {login}
+const getAddressLogin = (req,res) =>{
+    con.query(`START TRANSACTION;select address from user,customers where user.user_id = customers.cust_id and user.user_id = ${req.params.id}`,(err,results)=>{
+        if(err) throw err;
+        res.send(results)
+    })
+}
+
+module.exports = {login,getAddressLogin}

@@ -27,7 +27,7 @@ function App() {
       <Route path="/cart" element={<Cart/>}></Route>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/login" element={<Login user={user} setUser={setUser}/>}></Route>
-      <Route path="/profile" element={<Profile user={user} setUser={setUser}/>}></Route>
+      <Route path="/profile" element={<Profile setUser={setUser}/>}></Route>
       <Route path="/addproduct" element={<AddProduct/>}></Route>
 
       

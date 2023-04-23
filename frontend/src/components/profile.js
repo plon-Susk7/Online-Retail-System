@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Profile = ({user,setUser}) => {
+const Profile = ({setUser}) => {
   const userLocal = JSON.parse(localStorage.getItem('user'))
-
+  console.log(userLocal)
   const handleLogout = () => {
     setUser(null)
     localStorage.removeItem('user')
@@ -30,7 +30,11 @@ const Profile = ({user,setUser}) => {
         Username: {userLocal.username}
       </p>
       <p className="text-gray-700 font-semibold">
-        Account Type: {userLocal.role}
+        Account Type: {userLocal.r_ole}
+      </p>
+      <p className="text-gray-700 font-semibold">
+        Address: {userLocal.address}
+        {console.log(userLocal.address)}
       </p>
       <button
         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4"
