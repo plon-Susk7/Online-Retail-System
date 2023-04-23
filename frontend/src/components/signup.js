@@ -33,23 +33,44 @@ const Signup = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmission}>
-        <label>Enter First Name</label>
-        <input type="text" name="fname" value={formData.fname} onChange={handleInputChange} />
-        <label>Enter Middle Name</label>
-        <input type="text" name="mname" value={formData.mname} onChange={handleInputChange} />
-        <label>Enter Last Name</label>
-        <input type="text" name="lname" value={formData.lname} onChange={handleInputChange} />
-        <label>Enter User Name</label>
-        <input type="text" name="username" value={formData.username} onChange={handleInputChange} />
-        <label>Enter password</label>
-        <input type="text" name="passw" value={formData.passw} onChange={handleInputChange} />
-        <label>Enter Phone number</label>
-        <input type="number" name="phone_numb" value={formData.phone_numb} onChange={handleInputChange} />
-        <label>Enter Address</label>
-        <input type="text" name="address" value={formData.address} onChange={handleInputChange} />
-        <button type="submit">Submit</button>
+    <div className="bg-gray-200 min-h-screen flex items-center justify-center">
+      <form className="w-full max-w-lg bg-white p-8 rounded shadow-lg" onSubmit={handleSubmission}>
+        <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block font-medium mb-1">First Name</label>
+            <input className="border rounded w-full py-2 px-3" type="text" name="fname" value={formData.fname} onChange={handleInputChange} />
+          </div>
+          <div>
+            <label className="block font-medium mb-1">Middle Name</label>
+            <input className="border rounded w-full py-2 px-3" type="text" name="mname" value={formData.mname} onChange={handleInputChange} />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block font-medium mb-1">Last Name</label>
+            <input className="border rounded w-full py-2 px-3" type="text" name="lname" value={formData.lname} onChange={handleInputChange} />
+          </div>
+          <div>
+            <label className="block font-medium mb-1">User Name</label>
+            <input className="border rounded w-full py-2 px-3" type="text" name="username" value={formData.username} onChange={handleInputChange} />
+          </div>
+        </div>
+        <div>
+          <label className="block font-medium mb-1">Password</label>
+          <input className="border rounded w-full py-2 px-3" type="text" name="passw" value={formData.passw} onChange={handleInputChange} />
+        </div>
+        <div>
+          <label className="block font-medium mb-1">Phone Number</label>
+          <input className="border rounded w-full py-2 px-3" type="number" name="phone_numb" value={formData.phone_numb} onChange={handleInputChange} />
+        </div>
+        <div>
+          <label className="block font-medium mb-1">Address</label>
+          <input className="border rounded w-full py-2 px-3" type="text" name="address" value={formData.address} onChange={handleInputChange} />
+        </div>
+        <div className="mt-4">
+          <button className="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600" type="submit">Submit</button>
+        </div>
       </form>
     </div>
   )
