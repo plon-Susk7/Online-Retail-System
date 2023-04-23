@@ -18,6 +18,8 @@ const deleteProduct = (req,res) => {
         if(err) throw err;
         res.status(201).send("Deleted Successfully")
     })
+
+    // non conflicting transaction
 }
 
 
@@ -27,6 +29,8 @@ const addProduct = (req,res) => {
         if(err) throw err;
         res.status(201).send("Added Successfully")
     })
+
+    // non conflicting transaction
 }
 
 module.exports = {getAllProducts,deleteProduct,addProduct}

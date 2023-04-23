@@ -32,6 +32,8 @@ const getOrdersCustomer = (req,res) => {
         console.log(results);
         res.status(201).send(results);
     })
+
+    // non conflicting transaction
 }
 
 
