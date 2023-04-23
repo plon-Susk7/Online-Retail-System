@@ -5,6 +5,7 @@ const getOrders = (req,res) =>{
     
     con.query('select orders.order_id,user.username as customer,user.username as agent,orders.total,orders.address,orders.placed_date from orders,user where orders.cust_id = user.user_id',(err,results)=>{
         if(err) throw err;
+        console.log(results)
         res.status(201).send(results);
     })
 
@@ -26,9 +27,10 @@ const changeOrderStatus = (req,res) =>{
 }
 
 const getOrdersCustomer = (req,res) => {
-    con.query('',(err,result)=>{
+    con.query(`START TRANSACTION;SELECT * from orders,delivers where orders.order_id = delivers.order_id and orders.cust_id = ${req.params.id};COMMIT;`,(err,results)=>{
         if(err) throw err;
-        res.status.send(results);
+        console.log(results);
+        res.status(201).send(results);
     })
 }
 

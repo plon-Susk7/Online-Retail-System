@@ -7,6 +7,10 @@ const Home = () => {
   const [customers, setCustomers] = useState([]);
   const [flag,setFlag] = useState(true)
   const [orderFlag,setOrderFlag] = useState(true)
+
+  const [customerOrderFlag,setCustomerOrderFlag] = useState(true)
+  const [orderCustomers, setOrderCustomers] = useState([]);
+
   const userLocal = JSON.parse(localStorage.getItem('user'))
   const handleAgentButtonClick = () => {
     axios.get('http://localhost:8000/user/agents')
@@ -52,14 +56,15 @@ const Home = () => {
   };
 
   const handleDeliveryCustomerButtonClick = () => {
-    axios.get('http://localhost:8000/order')
+    axios.get(`http://localhost:8000/order/customer/${userLocal.user_id}`)
       .then((result) => {
-        if(orderFlag===true){
-            setOrders(result.data);
-            setOrderFlag(false)
+        console.log(result)
+        if(customerOrderFlag===true){
+            setOrderCustomers(result.data[1]);
+            setCustomerOrderFlag(false)
         }else{
-            setOrders([])
-            setOrderFlag(true)
+            setOrderCustomers([])
+            setCustomerOrderFlag(true)
         }
       })
       .catch(err => console.log(err));
@@ -157,6 +162,38 @@ const Home = () => {
                 </div>
               </li>
             ))}
+          </ul>
+        </div>
+      )}
+
+
+      {orderCustomers.length > 0 &&(
+        <div className="mt-10">
+          <h2 className="text-lg font-bold mb-2">Orders:</h2>
+          <ul className="list-disc list-inside">
+            {console.log(orderCustomers)}
+            {orderCustomers.map((order) => (
+              
+                <li className="mb-4">
+                <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+                    <div className="flex justify-between items-center mb-2">
+                    <div className="text-gray-700 font-semibold">{order.order_id}</div>
+                    <div className="text-gray-600 text-sm">{order.placed_date}</div>
+                    </div>
+          
+                    <div className="mb-2">
+                    <div className="text-gray-600 text-sm">Total:</div>
+                    <div className="text-gray-700 font-semibold">${order.total}</div>
+                    </div>
+                    <div className="mb-2">
+                    <div className="text-gray-600 text-sm">Address:</div>
+                    <div className="text-gray-700 font-semibold">{order.address}</div>
+                    <div className="text-gray-600 text-sm">Status:</div>
+                    <div className="text-gray-700 font-semibold">{order.status}</div>
+                    </div>
+                </div>
+                </li>
+                ))}
           </ul>
         </div>
       )}
