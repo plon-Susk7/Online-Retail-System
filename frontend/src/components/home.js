@@ -51,6 +51,20 @@ const Home = () => {
       .catch(err => console.log(err));
   };
 
+  const handleDeliveryCustomerButtonClick = () => {
+    axios.get('http://localhost:8000/order')
+      .then((result) => {
+        if(orderFlag===true){
+            setOrders(result.data);
+            setOrderFlag(false)
+        }else{
+            setOrders([])
+            setOrderFlag(true)
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
   const handleDeliveryButtonClick = () => {
     axios.get(`http://localhost:8000/order/agent/${userLocal.user_id}`)
     .then((result)=>{
@@ -118,6 +132,19 @@ const Home = () => {
           </button>
         </div>
       )}
+
+      {user && user.role === 'Customer' && (
+        <div>
+            <button
+            className="bg-yellow-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+             onClick={handleDeliveryCustomerButtonClick}
+          >
+            List Orders
+          </button>
+        </div>
+      )}
+
+    
 
       {customers.length > 0 && (
         <div className="mt-10">

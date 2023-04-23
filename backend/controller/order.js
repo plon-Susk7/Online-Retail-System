@@ -3,7 +3,7 @@ const con = require('../db/mysql')
 
 const getOrders = (req,res) =>{
     
-    con.query('select orders.order_id,user.username as customer,user.username as agent,orders.total,orders.address,orders.placed_date,orders.status from orders,user where orders.cust_id = user.user_id',(err,results)=>{
+    con.query('select orders.order_id,user.username as customer,user.username as agent,orders.total,orders.address,orders.placed_date from orders,user where orders.cust_id = user.user_id',(err,results)=>{
         if(err) throw err;
         res.status(201).send(results);
     })
@@ -25,5 +25,12 @@ const changeOrderStatus = (req,res) =>{
     })
 }
 
+const getOrdersCustomer = (req,res) => {
+    con.query('',(err,result)=>{
+        if(err) throw err;
+        res.status.send(results);
+    })
+}
 
-module.exports = {getOrders,getOrdersAgent,changeOrderStatus}
+
+module.exports = {getOrders,getOrdersAgent,changeOrderStatus,getOrdersCustomer}
