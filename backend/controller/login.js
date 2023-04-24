@@ -5,9 +5,20 @@ const login= (req,res) =>{
     
     console.log(req.body)
 
-    con.query(`select * from user,customers where user.user_id = customers.cust_id and user.username='${req.body.username}' and user.passw=${req.body.passw}`,(err,results)=>{
+    con.query(`select * from user,customers,deliverers where user.user_id = customers.cust_id and user.username='${req.body.username}' and user.passw=${req.body.passw}`,(err,results)=>{
         if(err) throw err;
-        res.send(results)
+        if(results.length===0){
+            
+            con.query(`select * from user,deliverers where user.user_id = deliverers.deliv_id and user.username='${req.body.username}' and user.passw=${req.body.passw}`,(err,result)=>{
+                if(err) throw err;
+                console.log(result)
+                res.send(result)
+            })
+        }else{
+            res.send(results)
+        }
+        
+        
     })
 
 }
